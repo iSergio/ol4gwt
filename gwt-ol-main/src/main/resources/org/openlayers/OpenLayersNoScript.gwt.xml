@@ -1,0 +1,14 @@
+<module>
+    <inherits name="com.google.gwt.user.User" />
+    <inherits name="com.google.gwt.json.JSON" />
+
+    <entry-point class="org.openlayers.ol.OpenLayersEntryPoint" />
+
+    <define-linker name="openLayersScriptInjector" class="org.openlayers.linker.OpenLayersScriptInjector" />
+    <add-linker    name="openLayersScriptInjector"/>
+
+    <set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+
+    <source path="ol"/>
+    <source path="olx"/>
+</module>

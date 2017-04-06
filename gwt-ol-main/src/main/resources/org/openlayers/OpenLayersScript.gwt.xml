@@ -1,0 +1,5 @@
+<module>
+    <script src="ol/OpenLayers/ol.js" />
+
+    <stylesheet src="ol/OpenLayers/ol.css"/>
+</module>

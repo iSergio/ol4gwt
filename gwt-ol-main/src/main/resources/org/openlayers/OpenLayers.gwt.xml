@@ -1,0 +1,4 @@
+<module>
+    <inherits name="org.openlayers.OpenLayersNoScript" />
+    <inherits name="org.openlayers.OpenLayersScript" />
+</module>
