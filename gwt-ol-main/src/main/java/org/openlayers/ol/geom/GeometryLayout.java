@@ -16,26 +16,39 @@
 
 package org.openlayers.ol.geom;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The coordinate layout for geometries, indicating whether a 3rd or 4th z ('Z') or measure ('M') coordinate is available.
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.geom", name = "GeometryLayout")
-public class GeometryLayout {
-    @JsProperty(name = "XY")
-    public native String XY();
-    @JsProperty(name = "XYZ")
-    public native String XYZ();
-    @JsProperty(name = "XYM")
-    public native String XYM();
-    @JsProperty(name = "XYZM")
-    public native String XYZM();
+public enum GeometryLayout {
+    XY("XY"),
+    XYZ("XYZ"),
+    XYM("XYM"),
+    XYZM("XYZM");
 
-    @JsConstructor
-    private GeometryLayout() {}
+    private final static Map<String, GeometryLayout> ENUM_MAP = new HashMap<>();
+    static {
+        for (GeometryLayout value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    GeometryLayout(String value) {
+        this.value = value;
+    }
+
+    public static GeometryLayout fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

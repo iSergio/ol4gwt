@@ -16,9 +16,8 @@
 
 package org.openlayers.ol.source;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Available server types: 'carmentaserver', 'geoserver', 'mapserver', 'qgis'.
@@ -26,17 +25,31 @@ import jsinterop.annotations.JsType;
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.source", name = "WMSServerType")
-public class WMSServerType {
-    @JsProperty(name = "CARMENTA_SERVER")
-    public native String CARMENTA_SERVER();
-    @JsProperty(name = "GEOSERVER")
-    public native String GEOSERVER();
-    @JsProperty(name = "MAPSERVER")
-    public native String MAPSERVER();
-    @JsProperty(name = "QGIS")
-    public native String QGIS();
+public enum WMSServerType {
+    CARMENTA_SERVER("carmentaserver"),
+    GEOSERVER("geoserver"),
+    MAPSERVER("mapserver"),
+    QGIS("qgis");
 
-    @JsConstructor
-    private WMSServerType() {}
+    private final static Map<String, WMSServerType> ENUM_MAP = new HashMap<>();
+    static {
+        for (WMSServerType value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    WMSServerType(String value) {
+        this.value = value;
+    }
+
+    public static WMSServerType fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

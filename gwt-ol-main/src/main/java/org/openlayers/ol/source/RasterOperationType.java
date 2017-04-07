@@ -20,16 +20,35 @@ import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.source", name = "RasterOperationType")
-public class RasterOperationType {
-    @JsProperty(name = "PIXEL")
-    public native String PIXEL();
-    @JsProperty(name = "IMAGE")
-    public native String IMAGE();
+public enum RasterOperationType {
+    PIXEL("pixel"),
+    IMAGE("image");
 
-    @JsConstructor
-    private RasterOperationType() {}
+    private final static Map<String, RasterOperationType> ENUM_MAP = new HashMap<>();
+    static {
+        for (RasterOperationType value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    RasterOperationType(String value) {
+        this.value = value;
+    }
+
+    public static RasterOperationType fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

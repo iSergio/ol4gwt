@@ -19,23 +19,41 @@ package org.openlayers.ol.proj;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Projection units.
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.proj", name = "Units")
-public class Units {
-    @JsProperty(name = "DEGREES")
-    public native String DEGREES();
-    @JsProperty(name = "FEET")
-    public native String FEET();
-    @JsProperty(name = "METERS")
-    public native String METERS();
-    @JsProperty(name = "PIXELS")
-    public native String PIXELS();
-    @JsProperty(name = "TILE_PIXELS")
-    public native String TILE_PIXELS();
-    @JsProperty(name = "USFEET")
-    public native String USFEET();
+public enum Units {
+    DEGREES("degrees"),
+    FEET("ft"),
+    METERS("m"),
+    PIXELS("pixels"),
+    TILE_PIXELS("tile-pixels"),
+    USFEET("us-ft");
+
+    private final static Map<String, Units> ENUM_MAP = new HashMap<>();
+    static {
+        for (Units value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    Units(String value) {
+        this.value = value;
+    }
+
+    public static Units fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

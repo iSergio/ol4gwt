@@ -16,36 +16,44 @@
 
 package org.openlayers.ol.geom;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The geometry type
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.geom", name = "GeometryType")
-public class GeometryType {
-    @JsProperty(name = "")
-    public native String POINT();
-    @JsProperty(name = "")
-    public native String LINE_STRING();
-    @JsProperty(name = "")
-    public native String LINEAR_RING();
-    @JsProperty(name = "")
-    public native String POLYGON();
-    @JsProperty(name = "")
-    public native String MULTI_POINT();
-    @JsProperty(name = "")
-    public native String MULTI_LINE_STRING();
-    @JsProperty(name = "")
-    public native String MULTI_POLYGON();
-    @JsProperty(name = "")
-    public native String GEOMETRY_COLLECTION();
-    @JsProperty(name = "")
-    public native String CIRCLE();
+public enum GeometryType {
+    POINT("Point"),
+    LINE_STRING("LineString"),
+    LINEAR_RING("LinearRing"),
+    POLYGON("Polygon"),
+    MULTI_POINT("MultiPoint"),
+    MULTI_LINE_STRING("MultiLineString"),
+    MULTI_POLYGON("MultiPolygon"),
+    GEOMETRY_COLLECTION("GeometryCollection"),
+    CIRCLE("Circle");
 
-    @JsConstructor
-    private GeometryType() {}
+    private final static Map<String, GeometryType> ENUM_MAP = new HashMap<>();
+    static {
+        for (GeometryType value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    GeometryType(String value) {
+        this.value = value;
+    }
+
+    public static GeometryType fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

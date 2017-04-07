@@ -16,35 +16,49 @@
 
 package org.openlayers.ol.layer;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Render mode for vector tiles
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.layer", name = "VectorTileRenderType")
-public class VectorTileRenderType {
+public enum VectorTileRenderType {
     /**
      * Vector tiles are rendered as images. Great performance, but point symbols and texts are always rotated with the
      * view and pixels are scaled during zoom animations.
      */
-    @JsProperty(name = "IMAGE")
-    public static native String IMAGE();
+    IMAGE("image"),
     /**
      * Polygon and line elements are rendered as images, so pixels are scaled during zoom animations.
      * Point symbols and texts are accurately rendered as vectors and can stay upright on rotated views.
      */
-    @JsProperty(name = "IMAGE")
-    public static native String HYBRID();
+    HYBRID("hybrid"),
     /**
      * Vector tiles are rendered as vectors. Most accurate rendering even during animations, but slower performance
      * than the other options.
      */
-    @JsProperty(name = "IMAGE")
-    public static native String VECTOR();
+    VECTOR("vector");
 
-    @JsConstructor
-    private VectorTileRenderType() {}
+    private static final Map<String, VectorTileRenderType> ENUM_MAP = new HashMap<>();
+    static {
+        for (VectorTileRenderType value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    VectorTileRenderType(String value) {
+        this.value = value;
+    }
+
+    public static VectorTileRenderType fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

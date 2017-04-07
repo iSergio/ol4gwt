@@ -16,26 +16,39 @@
 
 package org.openlayers.ol.style;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Icon origin.
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.style", name = "IconOrigin")
-public class IconOrigin {
-    @JsProperty(name = "BOTTOM_LEFT")
-    public native String BOTTOM_LEFT();
-    @JsProperty(name = "BOTTOM_RIGHT")
-    public native String BOTTOM_RIGHT();
-    @JsProperty(name = "TOP_LEFT")
-    public native String TOP_LEFT();
-    @JsProperty(name = "TOP_RIGHT")
-    public native String TOP_RIGHT();
+public enum IconOrigin {
+    BOTTOM_LEFT("bottom-left"),
+    BOTTOM_RIGHT("bottom-right"),
+    TOP_LEFT("top-left"),
+    TOP_RIGHT("top-right");
 
-    @JsConstructor
-    private IconOrigin() {}
+    private final static Map<String, IconOrigin> ENUM_MAP = new HashMap<>();
+    static {
+        for (IconOrigin value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    IconOrigin(String value) {
+        this.value = value;
+    }
+
+    public static IconOrigin fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

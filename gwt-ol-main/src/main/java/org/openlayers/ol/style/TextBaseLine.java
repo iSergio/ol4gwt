@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openlayers.ol.control;
+package org.openlayers.ol.style;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,27 +22,28 @@ import java.util.Map;
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-public enum ScaleLineUnits {
-    DEGREES("degrees"),
-    IMPERIAL("imperial"),
-    NAUTICAL("nautical"),
-    METRIC("metric"),
-    US("us");
+public enum TextBaseLine {
+    BOTTOM("bottom"),
+    TOP("top"),
+    MIDDLE("middle"),
+    ALPHABETIC("alphabetic"),
+    HANGING("hanging"),
+    IDEOGRAPHIC("ideographic");
 
-    private final static Map<String, ScaleLineUnits> ENUM_MAP = new HashMap<>();
+    private static final Map<String, TextBaseLine> ENUM_MAP = new HashMap<>();
     static {
-        for (ScaleLineUnits value : values()) {
-            ENUM_MAP.put(value.value, value);
+        for (TextBaseLine textBaseLine : values()) {
+            ENUM_MAP.put(textBaseLine.value, textBaseLine);
         }
     }
 
     private final String value;
 
-    ScaleLineUnits(String value) {
+    TextBaseLine(String value) {
         this.value = value;
     }
 
-    public static ScaleLineUnits fromValue(String value) {
+    public static TextBaseLine fromValue(String value) {
         return ENUM_MAP.get(value);
     }
 

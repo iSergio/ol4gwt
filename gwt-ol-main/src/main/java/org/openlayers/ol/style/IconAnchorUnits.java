@@ -16,22 +16,44 @@
 
 package org.openlayers.ol.style;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Icon anchor units.
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.style", name = "IconAnchorUnits")
-public class IconAnchorUnits {
-    @JsProperty(name = "FRACTION")
-    public native String FRACTION();
-    @JsProperty(name = "PIXELS")
-    public native String PIXELS();
+public enum IconAnchorUnits {
+    FRACTION("fraction"),
+    PIXELS("pixels");
 
-    @JsConstructor
-    private IconAnchorUnits() {}
+    private final static Map<String, IconAnchorUnits> ENUM_MAP = new HashMap<>();
+    static {
+        for (IconAnchorUnits value : values()) {
+            ENUM_MAP.put(value.value, value);
+        }
+    }
+
+    private final String value;
+
+    IconAnchorUnits(String value) {
+        this.value = value;
+    }
+
+    public static IconAnchorUnits fromValue(String value) {
+        return ENUM_MAP.get(value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
+//    @JsProperty(name = "FRACTION")
+//    public static native String FRACTION();
+//    @JsProperty(name = "PIXELS")
+//    public static native String PIXELS();
+//
+//    @JsConstructor
+//    private IconAnchorUnits() {}
 }
