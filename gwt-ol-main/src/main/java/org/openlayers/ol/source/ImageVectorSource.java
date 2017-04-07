@@ -18,8 +18,11 @@ package org.openlayers.ol.source;
 
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
+import org.openlayers.ol.StyleFunction;
 import org.openlayers.ol.source.options.ImageVectorSourceOptions;
+import org.openlayers.ol.style.Style;
 
 /**
  * An image source whose images are canvas elements into which vector features read from a vector source ({@link VectorSource})
@@ -30,10 +33,17 @@ import org.openlayers.ol.source.options.ImageVectorSourceOptions;
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.source", name = "ImageCanvas")
+@JsType(isNative = true, namespace = "ol.source", name = "ImageVector")
 public class ImageVectorSource extends ImageCanvasSource {
     @JsConstructor
     public ImageVectorSource(ImageVectorSourceOptions options) {}
+
+    @JsOverlay
+    public static ImageVectorSource create(VectorSource source) {
+        ImageVectorSourceOptions options = new ImageVectorSourceOptions();
+        options.source = source;
+        return new ImageVectorSource(options);
+    }
 
     /**
      * Get a reference to the wrapped source.
@@ -41,48 +51,43 @@ public class ImageVectorSource extends ImageCanvasSource {
      */
     @JsMethod
     public native VectorSource getSource();
-//TODO: Style
-//    /**
-//     * Get the style for features. This returns whatever was passed to the style option at construction or to the setStyle method.
-//     * @return Layer style.
-//     */
-//    @JsMethod
-//    public native Style[] getStyle();
-//TODO: StyleFunction
-//    /**
-//     * Get the style for features. This returns whatever was passed to the style option at construction or to the setStyle method.
-//     * @return Layer style.
-//     */
-//    @JsMethod
-//    public native StyleFunction getStyleFunction();
-//TODO: Style
-//    /**
-//     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
-//     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
-//     * If it is null the layer has no style (a null style), so only features that have their own styles will be
-//     * rendered in the layer. See ol.style for information on the default style.
-//     * @param style Layer style.
-//     */
-//    @JsMethod
-//    public native void setStyle(Style style);
-//TODO: Style[]
-//    /**
-//     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
-//     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
-//     * If it is null the layer has no style (a null style), so only features that have their own styles will be
-//     * rendered in the layer. See ol.style for information on the default style.
-//     * @param style Layer style.
-//     */
-//    @JsMethod
-//    public native void setStyle(Style[] style);
-//TODO: StyleFunction
-//    /**
-//     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
-//     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
-//     * If it is null the layer has no style (a null style), so only features that have their own styles will be
-//     * rendered in the layer. See ol.style for information on the default style.
-//     * @param style Layer style.
-//     */
-//    @JsMethod
-//    public native void setStyle(StyleFunction style);
+    /**
+     * Get the style for features. This returns whatever was passed to the style option at construction or to the setStyle method.
+     * @return Layer style.
+     */
+    @JsMethod
+    public native Style[] getStyle();
+    /**
+     * Get the style for features. This returns whatever was passed to the style option at construction or to the setStyle method.
+     * @return Layer style.
+     */
+    @JsMethod
+    public native StyleFunction getStyleFunction();
+    /**
+     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
+     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
+     * If it is null the layer has no style (a null style), so only features that have their own styles will be
+     * rendered in the layer. See ol.style for information on the default style.
+     * @param style Layer style.
+     */
+    @JsMethod
+    public native void setStyle(Style style);
+    /**
+     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
+     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
+     * If it is null the layer has no style (a null style), so only features that have their own styles will be
+     * rendered in the layer. See ol.style for information on the default style.
+     * @param style Layer style.
+     */
+    @JsMethod
+    public native void setStyle(Style[] style);
+    /**
+     * Set the style for features. This can be a single style object, an array of styles, or a function that takes a
+     * feature and resolution and returns an array of styles. If it is undefined the default style is used.
+     * If it is null the layer has no style (a null style), so only features that have their own styles will be
+     * rendered in the layer. See ol.style for information on the default style.
+     * @param style Layer style.
+     */
+    @JsMethod
+    public native void setStyle(StyleFunction style);
 }

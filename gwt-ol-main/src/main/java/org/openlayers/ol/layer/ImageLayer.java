@@ -18,10 +18,12 @@ package org.openlayers.ol.layer;
 
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.layer.options.ImageLayerOptions;
 import org.openlayers.ol.layer.options.LayerOptions;
 import org.openlayers.ol.source.ImageSource;
+import org.openlayers.ol.source.ImageVectorSource;
 
 /**
  * Server-rendered images that are available for arbitrary extents and resolutions. Note that any property set in
@@ -33,13 +35,20 @@ import org.openlayers.ol.source.ImageSource;
 @JsType(isNative = true, namespace = "ol.layer", name = "Image")
 public class ImageLayer extends Layer {
     @JsConstructor
-    protected ImageLayer() {
+    public ImageLayer() {
         super(new ImageLayerOptions());
     }
 
     @JsConstructor
-    protected ImageLayer(ImageLayerOptions options) {
+    public ImageLayer(ImageLayerOptions options) {
         super(options);
+    }
+
+    @JsOverlay
+    public static ImageLayer create(ImageVectorSource source) {
+        ImageLayerOptions options = new ImageLayerOptions();
+        options.source = source;
+        return new ImageLayer(options);
     }
 
     /**

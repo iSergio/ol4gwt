@@ -36,6 +36,11 @@ public abstract class Geometry extends Object {
     protected Geometry() {}
 
     /**
+     * Get the type of this geometry.
+     * @return {@link GeometryType} Geometry type.
+     */
+    public native String getType();
+    /**
      * Return the closest point of the geometry to the passed point as coordinate.
      * @param point Point.
      * @return Closest point.

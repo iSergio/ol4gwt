@@ -21,6 +21,7 @@ import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.geom.Geometry;
 import org.openlayers.ol.options.FeatureOptions;
+import org.openlayers.ol.style.Style;
 
 /**
  * A vector object for geographic features with a geometry and other attribute properties, similar to the features in
@@ -76,13 +77,12 @@ public class Feature extends Object {
      */
     @JsMethod
     public native String getId();
-// TODO: Style[]
-//    /**
-//     * Get the feature's style. Will return what was provided to the ol.Feature#setStyle method.
-//     * @return The feature style.
-//     */
-//    @JsMethod
-//    public native Style[] getStyle();
+    /**
+     * Get the feature's style. Will return what was provided to the ol.Feature#setStyle method.
+     * @return The feature style.
+     */
+    @JsMethod
+    public native Style getStyle();
 // TODO: FeatureStyleFunction
 //    /**
 //     * Get the feature's style function.
@@ -114,22 +114,20 @@ public class Feature extends Object {
      */
     @JsMethod
     public native void setId(String id);
-// TODO: Style
-//    /**
-//     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
-//     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
-//     * @param style Style for this feature.
-//     */
-//    @JsMethod
-//    public native void setStyle(Style style);
-// TODO: Style[]
-//    /**
-//     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
-//     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
-//     * @param style Style for this feature.
-//     */
-//    @JsMethod
-//    public native void setStyle(Style[] style);
+    /**
+     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
+     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
+     * @param style Style for this feature.
+     */
+    @JsMethod
+    public native void setStyle(Style style);
+    /**
+     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
+     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
+     * @param style Style for this feature.
+     */
+    @JsMethod
+    public native void setStyle(Style[] style);
 // TODO: FeatureStyleFunction
 //    /**
 //     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
@@ -138,12 +136,11 @@ public class Feature extends Object {
 //     */
 //    @JsMethod
 //    public native void setStyle(FeatureStyleFunction style);
-// TODO: StyleFunction
-//    /**
-//     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
-//     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
-//     * @param style Style for this feature.
-//     */
-//    @JsMethod
-//    public native void setStyle(StyleFunction style);
+    /**
+     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
+     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
+     * @param style Style for this feature.
+     */
+    @JsMethod
+    public native void setStyle(StyleFunction style);
 }

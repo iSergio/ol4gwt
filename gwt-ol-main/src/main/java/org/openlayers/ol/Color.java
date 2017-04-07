@@ -17,6 +17,8 @@
 package org.openlayers.ol;
 
 import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
@@ -25,8 +27,13 @@ import jsinterop.annotations.JsType;
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol", name = "Color")
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class Color {
     @JsConstructor
     public Color(double[] array) {}
+
+    @JsOverlay
+    public static Color create(int r, int g, int b, double a) {
+        return new Color(new double[] {r, g, b, a});
+    }
 }

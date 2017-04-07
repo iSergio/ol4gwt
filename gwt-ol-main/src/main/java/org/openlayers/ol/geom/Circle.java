@@ -77,10 +77,10 @@ public class Circle extends SimpleGeometry {
 
     /**
      * Get the type of this geometry.
-     * @return Geometry type.
+     * @return {@link GeometryType} Geometry type.
      */
     @JsMethod
-    public native GeometryType getType();
+    public native String getType();
 
     /**
      * Test if the geometry and the passed extent intersect.
