@@ -66,15 +66,15 @@ public class TextStyleOptions {
      */
     @JsProperty
     public String text;
-    //TODO: textAlign enum
     /**
      * Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'. Default is 'start'.
+     * {@link org.openlayers.ol.style.TextAlign}
      */
     @JsProperty
     public String textAlign;
-    //TODO: textBaseline enum
     /**
      * Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic', 'hanging', 'ideographic'. Default is 'alphabetic'.
+     * {@link org.openlayers.ol.style.TextBaseLine}
      */
     @JsProperty
     public String textBaseline;

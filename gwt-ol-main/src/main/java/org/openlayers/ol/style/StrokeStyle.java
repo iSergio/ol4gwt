@@ -48,6 +48,22 @@ public class StrokeStyle {
         return new StrokeStyle(options);
     }
 
+    @JsOverlay
+    public static StrokeStyle create(Color color, int width) {
+        StrokeStyleOptions options = new StrokeStyleOptions();
+        options.color = color;
+        options.width = width;
+        return new StrokeStyle(options);
+    }
+
+    @JsOverlay
+    public static StrokeStyle create(String colorStr, int width) {
+        StrokeStyleOptions options = new StrokeStyleOptions();
+        options.colorStr = colorStr;
+        options.width = width;
+        return new StrokeStyle(options);
+    }
+
     /**
      * Clones the style.
      * @return The cloned style.

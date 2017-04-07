@@ -37,7 +37,7 @@ public class IconStyleOptions {
      * Anchor. Default value is [0.5, 0.5] (icon center).
      */
     @JsProperty
-    public double anchor;
+    public double[] anchor;
     /**
      * Origin of the anchor: bottom-left, bottom-right, top-left or top-right. Default is top-left.
      * {@link IconOrigin}

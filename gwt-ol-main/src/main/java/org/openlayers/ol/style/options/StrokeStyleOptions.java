@@ -71,7 +71,7 @@ public class StrokeStyleOptions {
      * Width.
      */
     @JsProperty
-    public double width;
+    public int width;
 
 
     @JsConstructor
