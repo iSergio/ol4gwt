@@ -26,7 +26,7 @@ import org.openlayers.ol.TransformFunction;
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol.proj")
+@JsType(isNative = true, namespace = "ol", name = "proj")
 public class ProjectionUtils {
     /**
      * Registers coordinate transform functions to convert coordinates between the source projection and the destination
