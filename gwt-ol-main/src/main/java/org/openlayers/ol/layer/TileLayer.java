@@ -19,6 +19,7 @@ package org.openlayers.ol.layer;
 import jsinterop.annotations.*;
 import org.openlayers.ol.events.ObjectEvent;
 import org.openlayers.ol.layer.options.TileLayerOptions;
+import org.openlayers.ol.source.Source;
 import org.openlayers.ol.source.TileSource;
 
 /**
@@ -29,6 +30,13 @@ public class TileLayer extends Layer {
     @JsConstructor
     public TileLayer(TileLayerOptions options) {
         super(options);
+    }
+
+    @JsOverlay
+    public static TileLayer create(Source source) {
+        TileLayerOptions options = new TileLayerOptions();
+        options.source = source;
+        return new TileLayer(options);
     }
 
     /**
