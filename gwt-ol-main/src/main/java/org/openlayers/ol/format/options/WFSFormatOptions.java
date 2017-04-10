@@ -1,0 +1,61 @@
+/*
+ * Copyright 2017 iserge.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.openlayers.ol.format.options;
+
+import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+import org.openlayers.ol.Object;
+import org.openlayers.ol.format.GMLBaseFormat;
+
+/**
+ * {@link org.openlayers.ol.format.WFSFormat} options.
+ *
+ * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
+ */
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class WFSFormatOptions {
+    /**
+     * The namespace URI used for features.
+     */
+    @JsProperty
+    public Object featureNS;
+    /**
+     * The namespace URI used for features.
+     */
+    @JsProperty(name = "featureNS")
+    public String featureNSString;
+    /**
+     * The feature type to parse. Only used for read operations.
+     */
+    @JsProperty
+    public String[] featureType;
+    /**
+     * The GML format to use to parse the response. Default is ol.format.GML3.
+     */
+    @JsProperty
+    public GMLBaseFormat gmlFormat;
+    /**
+     * Optional schemaLocation to use for serialization, this will override the default.
+     */
+    @JsProperty
+    public String schemaLocation;
+
+    @JsConstructor
+    public WFSFormatOptions() {}
+}
