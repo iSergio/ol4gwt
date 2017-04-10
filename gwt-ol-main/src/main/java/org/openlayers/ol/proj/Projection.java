@@ -18,6 +18,7 @@ package org.openlayers.ol.proj;
 
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.Extent;
 import org.openlayers.ol.proj.options.ProjectionOptions;
@@ -41,6 +42,7 @@ public class Projection {
     @JsConstructor
     public Projection(ProjectionOptions options) {}
 
+    @JsOverlay
     public static Projection create(String code) {
         ProjectionOptions options = new ProjectionOptions();
         options.code = code;
