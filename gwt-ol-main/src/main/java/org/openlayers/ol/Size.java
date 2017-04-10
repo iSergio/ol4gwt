@@ -17,6 +17,8 @@
 package org.openlayers.ol;
 
 import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
@@ -24,8 +26,31 @@ import jsinterop.annotations.JsType;
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol", name = "Size")
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class Size {
     @JsConstructor
     public Size(double[] array) {}
+
+    @JsOverlay
+    public static Size create(double width, double height) {
+        return new Size(new double[] {width, height});
+    }
+
+    @JsOverlay
+    public final double getWidth() {
+        return JsUtils.get(this, 0);
+    }
+
+    @JsOverlay
+    public final double getHeight() {
+        return JsUtils.get(this, 1);
+    }
+
+    @JsOverlay
+    public final String toString() {
+        return "[" + getWidth() +
+                "," +
+                getHeight() +
+                "]";
+    }
 }
