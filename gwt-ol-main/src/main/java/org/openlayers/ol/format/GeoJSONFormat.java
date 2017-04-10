@@ -21,9 +21,7 @@ import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.Feature;
-import org.openlayers.ol.format.options.GeoJSONFormatOptions;
-import org.openlayers.ol.format.options.GeoJSONFormatReadOptions;
-import org.openlayers.ol.format.options.GeoJSONFormatWriteOptions;
+import org.openlayers.ol.format.options.*;
 import org.openlayers.ol.geom.Geometry;
 import org.openlayers.ol.proj.Projection;
 
@@ -53,11 +51,11 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * Read a feature from a GeoJSON Feature source. Only works for Feature or geometry types.
      * Use ol.format.GeoJSON#readFeatures to read FeatureCollection source.
      * @param source Source.
-     * @param options {@link GeoJSONFormatReadOptions} Read options.
+     * @param options {@link FormatReadOptions} Read options.
      * @return Feature.
      */
     @JsMethod
-    public native Feature readFeature(String source, GeoJSONFormatReadOptions options);
+    public native Feature readFeature(String source, FormatReadOptions options);
 
     /**
      * Read a feature from a GeoJSON Feature source. Only works for Feature or geometry types.
@@ -73,7 +71,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      */
     @JsOverlay
     public final Feature readFeature(String source, Projection dataProjection, Projection featureProjection) {
-        GeoJSONFormatReadOptions options = new GeoJSONFormatReadOptions();
+        FormatReadOptions options = new FormatReadOptions();
         options.dataProjection = dataProjection;
         options.featureProjection = featureProjection;
         return readFeature(source, options);
@@ -96,7 +94,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return Features.
      */
     @JsMethod
-    public native Feature[] readFeatures(String source, GeoJSONFormatReadOptions options);
+    public native Feature[] readFeatures(String source, FormatReadOptions options);
 
     /**
      * Read all features from a GeoJSON source. Works for all GeoJSON types. If the source includes only geometries,
@@ -112,7 +110,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      */
     @JsOverlay
     public final Feature[] readFeatures(String source, Projection dataProjection, Projection featureProjection) {
-        GeoJSONFormatReadOptions options = new GeoJSONFormatReadOptions();
+        FormatReadOptions options = new FormatReadOptions();
         options.dataProjection = dataProjection;
         options.featureProjection = featureProjection;
         return readFeatures(source, options);
@@ -125,7 +123,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return Geometry.
      */
     @JsMethod
-    public native Geometry readGeometry(String source, GeoJSONFormatReadOptions options);
+    public native Geometry readGeometry(String source, FormatReadOptions options);
 
     /**
      * Read a geometry from a GeoJSON source.
@@ -140,7 +138,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      */
     @JsOverlay
     public final Geometry readGeometry(String source, Projection dataProjection, Projection featureProjection) {
-        GeoJSONFormatReadOptions options = new GeoJSONFormatReadOptions();
+        FormatReadOptions options = new FormatReadOptions();
         options.dataProjection = dataProjection;
         options.featureProjection = featureProjection;
         return readGeometry(source, options);
@@ -161,7 +159,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return GeoJSON.
      */
     @JsMethod
-    public native String writeFeature(Feature feature, GeoJSONFormatWriteOptions options);
+    public native String writeFeature(Feature feature, FormatWriteOptions options);
 
     /**
      * Encode a feature as a GeoJSON Feature object.
@@ -170,7 +168,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return Object.
      */
     @JsMethod
-    public native Object writeFeatureObject(Feature feature, GeoJSONFormatWriteOptions options);
+    public native Object writeFeatureObject(Feature feature, FormatWriteOptions options);
 
     /**
      * Encode an array of features as GeoJSON.
@@ -179,7 +177,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return GeoJSON.
      */
     @JsMethod
-    public native String writeFeatures(Feature[] features, GeoJSONFormatWriteOptions options);
+    public native String writeFeatures(Feature[] features, FormatWriteOptions options);
 
     /**
      * Encode an array of features as a GeoJSON object.
@@ -188,7 +186,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return GeoJSON Object.
      */
     @JsMethod
-    public native Object writeFeaturesObject(Feature[] features, GeoJSONFormatWriteOptions options);
+    public native Object writeFeaturesObject(Feature[] features, FormatWriteOptions options);
 
     /**
      * Encode a geometry as a GeoJSON string.
@@ -197,7 +195,7 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return GeoJSON.
      */
     @JsMethod
-    public native String writeGeometry(Geometry geometry, GeoJSONFormatWriteOptions options);
+    public native String writeGeometry(Geometry geometry, FormatWriteOptions options);
 
     /**
      * Encode a geometry as a GeoJSON object.
@@ -206,5 +204,5 @@ public class GeoJSONFormat extends JSONFeatureFormat {
      * @return Object.
      */
     @JsMethod
-    public native Object writeGeometryObject(Geometry geometry, GeoJSONFormatWriteOptions options);
+    public native Object writeGeometryObject(Geometry geometry, FormatWriteOptions options);
 }
