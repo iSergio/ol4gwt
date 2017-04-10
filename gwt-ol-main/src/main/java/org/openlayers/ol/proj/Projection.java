@@ -41,6 +41,12 @@ public class Projection {
     @JsConstructor
     public Projection(ProjectionOptions options) {}
 
+    public static Projection create(String code) {
+        ProjectionOptions options = new ProjectionOptions();
+        options.code = code;
+        return new Projection(options);
+    }
+
     /**
      * Get the code for this projection, e.g. 'EPSG:4326'.
      * @return Code.
