@@ -56,4 +56,14 @@ public class Coordinate {
     public final double getZ() {
         return JsUtils.get(this, 2);
     }
+
+    @JsOverlay
+    public final String toString() {
+        return "[" + getX() +
+                "," +
+                getY() +
+                "," +
+                getZ() +
+                "]";
+    }
 }
