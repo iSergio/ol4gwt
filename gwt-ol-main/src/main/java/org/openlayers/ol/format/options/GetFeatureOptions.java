@@ -21,6 +21,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.Extent;
+import org.openlayers.ol.format.filter.Filter;
 
 /**
  * {@link org.openlayers.ol.format.WFSFormat#writeGetFeature(GetFeatureOptions)} options.
@@ -90,9 +91,11 @@ public class GetFeatureOptions {
      */
     @JsProperty
     public Extent bbox;
-//TODO: format.Filter
-//    filter	ol.format.filter.Filter | undefined
-//    Filter condition. See ol.format.filter for more information.
+    /**
+     * Filter condition. See {@link org.openlayers.ol.format.filter.FilterUtils} for more information.
+     */
+    @JsProperty
+    public Filter filter;
     /**
      * Indicates what response should be returned, E.g. hits only includes the numberOfFeatures attribute in the response and no features.
      */
