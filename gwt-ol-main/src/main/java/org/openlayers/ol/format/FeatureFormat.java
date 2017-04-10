@@ -16,14 +16,16 @@
 
 package org.openlayers.ol.format;
 
-import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsType;
 
 /**
+ * Abstract base class; normally only used for creating subclasses and not instantiated in apps.
+ * Base class for feature formats. {@link FeatureFormat} subclasses provide the ability to decode and
+ * encode {@link org.openlayers.ol.Feature} objects from a variety of commonly used geospatial file formats.
+ * See the documentation for each format for more details.
+ *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsType(isNative = true, namespace = "ol.format", name = "Feature")
-public class FeatureFormat {
-    @JsConstructor
-    protected FeatureFormat() {}
+public abstract class FeatureFormat {
 }
