@@ -82,7 +82,7 @@ public class WFSFormat extends XMLFeatureFormat {
      * @return Features.
      */
     @JsOverlay
-    public Feature[] readFeatures(String source, Projection dataProjection, Projection featureProjection) {
+    public final Feature[] readFeatures(String source, Projection dataProjection, Projection featureProjection) {
         FormatReadOptions options = new FormatReadOptions();
         options.dataProjection = dataProjection;
         options.featureProjection = featureProjection;
@@ -101,7 +101,7 @@ public class WFSFormat extends XMLFeatureFormat {
      * @return Features.
      */
     @JsOverlay
-    public Feature[] readFeatures(String source, String dataProjection, String featureProjection) {
+    public final Feature[] readFeatures(String source, String dataProjection, String featureProjection) {
         FormatReadOptions options = new FormatReadOptions();
         options.dataProjection = Projection.create(dataProjection);
         options.featureProjection = Projection.create(featureProjection);
