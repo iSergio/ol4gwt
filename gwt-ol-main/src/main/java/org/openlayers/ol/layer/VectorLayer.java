@@ -18,6 +18,7 @@ package org.openlayers.ol.layer;
 
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.layer.options.VectorLayerOptions;
 import org.openlayers.ol.source.VectorSource;
@@ -31,6 +32,13 @@ public class VectorLayer extends Layer {
     @JsConstructor
     public VectorLayer(VectorLayerOptions options) {
         super(options);
+    }
+
+    @JsOverlay
+    public static VectorLayer create(VectorSource source) {
+        VectorLayerOptions options = new VectorLayerOptions();
+        options.source = source;
+        return new VectorLayer(options);
     }
 
     /**
