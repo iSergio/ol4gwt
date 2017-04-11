@@ -59,6 +59,13 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native void clear(boolean fast);
+    /**
+     * Iterate through all features on the source, calling the provided callback with each one. If the callback returns any
+     * "truthy" value, iteration will stop and the function will return the same value.
+     * @param callback Called with each feature on the source. Return a truthy value to stop iteration.
+     */
+    @JsMethod
+    public native void forEachFeature(Callback callback);
 
     /**
      * Iterate through all features on the source, calling the provided callback with each one. If the callback returns any
@@ -68,6 +75,21 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native void forEachFeature(Callback callback, Object that);
+    /**
+     * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry
+     * may not intersect the extent), calling the callback with each feature. If the callback returns a "truthy" value,
+     * iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call the
+     * source.forEachFeatureIntersectingExtent() method instead.
+     *
+     * When useSpatialIndex is set to false, this method will loop through all features,
+     * equivalent to ol.source.Vector#forEachFeature.
+     * @param extent Extent.
+     * @param callback Called with each feature whose bounding box intersects the provided extent.
+     */
+    @JsMethod
+    public native void forEachFeatureInExtent(Extent extent, Callback callback);
 
     /**
      * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry
@@ -85,6 +107,17 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native void forEachFeatureInExtent(Extent extent, Callback callback, Object that);
+
+    /**
+     * Iterate through all features whose geometry intersects the provided extent, calling the callback with each feature.
+     * If the callback returns a "truthy" value, iteration will stop and the function will return the same value.
+     *
+     * If you only want to test for bounding box intersection, call the source.forEachFeatureInExtent() method instead.
+     * @param extent Extent.
+     * @param callback Called with each feature whose geometry intersects the provided extent.
+     */
+    @JsMethod
+    public native void forEachFeatureIntersectingExtent(Extent extent, Callback callback);
 
     /**
      * Iterate through all features whose geometry intersects the provided extent, calling the callback with each feature.
