@@ -48,7 +48,7 @@ public class BoxSelection extends AbstractExample {
 
     @Inject
     public BoxSelection(ShowcaseExampleStore store) {
-        super("Box Selection", "OpenStreetMap", new String[]{"Map", "View", "condition", "GeoJSON", "DragBox", "Select", "TileLayer", "VectorLayer", "OSM", "VectorSource"}, store);
+        super("Box Selection", "Box selection", new String[]{"Map", "View", "condition", "GeoJSON", "DragBox", "Select", "TileLayer", "VectorLayer", "OSM", "VectorSource"}, store);
     }
 
     @Override
