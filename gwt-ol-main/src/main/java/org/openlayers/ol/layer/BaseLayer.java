@@ -32,6 +32,9 @@ import org.openlayers.ol.layer.options.BaseLayerOptions;
 @JsType(isNative = true, namespace = "ol.layer", name = "Base")
 public abstract class BaseLayer extends Object {
     @JsConstructor
+    protected BaseLayer() {}
+
+    @JsConstructor
     protected BaseLayer(BaseLayerOptions options) {}
 
     /**

@@ -17,6 +17,7 @@
 package org.openlayers.ol.layer;
 
 import jsinterop.annotations.*;
+import net.sourceforge.htmlunit.corejs.javascript.annotations.JSConstructor;
 import org.openlayers.ol.Map;
 import org.openlayers.ol.events.ObjectEvent;
 import org.openlayers.ol.events.RenderEvent;
@@ -28,6 +29,9 @@ import org.openlayers.ol.source.Source;
  */
 @JsType(isNative = true, namespace = "ol.layer", name = "Layer")
 public abstract class Layer extends BaseLayer {
+    @JSConstructor
+    protected Layer() {}
+
     @JsConstructor
     protected Layer(LayerOptions options) {
         super(options);
