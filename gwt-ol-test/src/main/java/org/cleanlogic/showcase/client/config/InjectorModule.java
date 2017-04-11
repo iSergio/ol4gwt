@@ -45,5 +45,6 @@ public class InjectorModule extends AbstractGinModule {
         bind(AccessibleMap.class).asEagerSingleton();
         bind(Cluster.class).asEagerSingleton();
         bind(VectorWFSGetFeature.class).asEagerSingleton();
+        bind(BoxSelection.class).asEagerSingleton();
     }
 }
