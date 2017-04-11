@@ -76,7 +76,16 @@ public class Map extends Object {
     @JsMethod
     public native void forEachFeatureAtPixel(Pixel pixel, EachFeatureAtPixelCallback callback);
 
-    //TODO :forEachLayerAtPixel
+    /**
+     * Detect layers that have a color value at a pixel on the viewport, and execute a callback with each matching layer.
+     * @param pixel Pixel.
+     * @param callback Layer callback. This callback will recieve two arguments: first is the layer, second argument is
+     *                 an array representing [R, G, B, A] pixel values (0 - 255) and will be null for layer
+     *                 types that do not currently support this argument. To stop detection, callback functions
+     *                 can return a truthy value.
+     */
+    @JsMethod
+    public native void forEachLayerAtPixel(Pixel pixel, EachLayerAtPixelCallback callback);
 
     /**
      * Get the map controls. Modifying this collection changes the controls associated with the map.
@@ -317,6 +326,16 @@ public class Map extends Object {
         String OBSERVABLE = TYPE.split(":")[1];
 
         void function(ObjectEvent event);
+    }
+
+    /**
+     * Layer callback. This callback will recieve two arguments: first is the layer, second argument is an array
+     * representing [R, G, B, A] pixel values (0 - 255) and will be null for layer types that do not currently
+     * support this argument. To stop detection, callback functions can return a truthy value.
+     */
+    @JsFunction
+    public interface EachLayerAtPixelCallback {
+        boolean function(BaseLayer layer, double[] rgba);
     }
 
     @JsFunction

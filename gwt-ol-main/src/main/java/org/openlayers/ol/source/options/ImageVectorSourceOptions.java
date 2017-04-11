@@ -21,8 +21,10 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.Attribution;
+import org.openlayers.ol.StyleFunction;
 import org.openlayers.ol.proj.Projection;
 import org.openlayers.ol.source.VectorSource;
+import org.openlayers.ol.style.Style;
 import org.openlayers.olx.LogoOptions;
 
 /**
@@ -74,18 +76,16 @@ public class ImageVectorSourceOptions extends ImageSourceOptions {
      */
     @JsProperty
     public VectorSource source;
-//    TODO: Style
-//    /**
-//     * Style to use when rendering features to the canvas.
-//     */
-//    @JsProperty
-//    public Style[] style;
-//    //TODO: StyleFunction
-//    /**
-//     * Style to use when rendering features to the canvas.
-//     */
-//    @JsProperty(name = "style")
-//    public StyleFunction styleFunction;
+    /**
+     * Style to use when rendering features to the canvas.
+     */
+    @JsProperty
+    public Style[] style;
+    /**
+     * Style to use when rendering features to the canvas.
+     */
+    @JsProperty(name = "style")
+    public StyleFunction styleFunction;
 
     @JsConstructor
     public ImageVectorSourceOptions() {}

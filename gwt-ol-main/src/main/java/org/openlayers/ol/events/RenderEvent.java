@@ -16,15 +16,35 @@
 
 package org.openlayers.ol.events;
 
-import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import org.openlayers.ol.Object;
+import org.openlayers.ol.render.VectorContext;
+import org.openlayers.olx.FrameState;
 
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsType(isNative = true, namespace = "ol.render", name = "Event")
 public class RenderEvent extends Event {
-    @JsConstructor
-    public RenderEvent() {}
-    // TODO later
+    /**
+     * Canvas context. Only available when a Canvas renderer is used, null otherwise.
+     */
+    @JsProperty
+    public Object context;
+    /**
+     * An object representing the current render frame state.
+     */
+    @JsProperty
+    public FrameState frameState;
+    /**
+     * WebGL context. Only available when a WebGL renderer is used, null otherwise.
+     */
+    @JsProperty
+    public Object glContext;
+    /**
+     * For canvas, this is an instance of ol.render.canvas.Immediate.
+     */
+    @JsProperty
+    public VectorContext vectorContext;
 }

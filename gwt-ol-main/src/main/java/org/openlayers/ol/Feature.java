@@ -83,13 +83,12 @@ public class Feature extends Object {
      */
     @JsMethod
     public native Style getStyle();
-// TODO: FeatureStyleFunction
-//    /**
-//     * Get the feature's style function.
-//     * @return Return a function representing the current style of this feature.
-//     */
-//    @JsMethod
-//    public native FeatureStyleFunction getStyleFunction();
+    /**
+     * Get the feature's style function.
+     * @return Return a function representing the current style of this feature.
+     */
+    @JsMethod
+    public native FeatureStyleFunction getStyleFunction();
 
     /**
      * Set the default geometry for the feature. This will update the property with the name returned by {@link #getGeometryName()}.
@@ -128,14 +127,13 @@ public class Feature extends Object {
      */
     @JsMethod
     public native void setStyle(Style[] style);
-// TODO: FeatureStyleFunction
-//    /**
-//     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
-//     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
-//     * @param style Style for this feature.
-//     */
-//    @JsMethod
-//    public native void setStyle(FeatureStyleFunction style);
+    /**
+     * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
+     * resolution and returns an array of styles. If it is null the feature has no style (a null style).
+     * @param style Style for this feature.
+     */
+    @JsMethod
+    public native void setStyle(FeatureStyleFunction style);
     /**
      * Set the style for the feature. This can be a single style object, an array of styles, or a function that takes a
      * resolution and returns an array of styles. If it is null the feature has no style (a null style).

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>gwt-ol</artifactId>
         <groupId>org.openlayers</groupId>
-        <version>2.0.0</version>
+        <version>4.0.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -153,7 +153,7 @@
         <dependency>
             <groupId>org.openlayers</groupId>
             <artifactId>gwt-ol-main</artifactId>
-            <version>2.0.0</version>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 </project>
