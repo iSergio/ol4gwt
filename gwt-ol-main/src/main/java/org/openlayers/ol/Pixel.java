@@ -17,13 +17,40 @@
 package org.openlayers.ol;
 
 import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 /**
+ * An array with two elements, representing a pixel.
+ * The first element is the x-coordinate, the second the y-coordinate of the pixel.
+ *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsType(isNative = true, namespace = "ol", name = "Pixel")
 public class Pixel {
     @JsConstructor
-    public Pixel(double[] array) {}
+    public Pixel(int[] array) {}
+
+    @JsOverlay
+    public static Pixel craete(int x, int y) {
+        return new Pixel(new int[] {x, y});
+    }
+
+    @JsOverlay
+    public final double getX() {
+        return JsUtils.get(this, 0);
+    }
+
+    @JsOverlay
+    public final double getY() {
+        return JsUtils.get(this, 1);
+    }
+
+    @JsOverlay
+    public final String toString() {
+        return "[" + getX() +
+                "," +
+                getY() +
+                "]";
+    }
 }
