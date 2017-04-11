@@ -20,10 +20,9 @@ import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
-import org.openlayers.ol.Collection;
-import org.openlayers.ol.Coordinate;
-import org.openlayers.ol.Extent;
-import org.openlayers.ol.Feature;
+import org.openlayers.ol.*;
+import org.openlayers.ol.Object;
+import org.openlayers.ol.format.FeatureFormat;
 import org.openlayers.ol.source.options.VectorSourceOptions;
 
 /**
@@ -60,10 +59,44 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native void clear(boolean fast);
-// TODO: forEachFeature, forEachFeature, forEachFeatureIntersectingExtent
-//    forEachFeature(callback, opt_this){S|undefined}
-//    forEachFeatureInExtent(extent, callback, opt_this){S|undefined}
-//    forEachFeatureIntersectingExtent(extent, callback, opt_this){S|undefined}
+
+    /**
+     * Iterate through all features on the source, calling the provided callback with each one. If the callback returns any
+     * "truthy" value, iteration will stop and the function will return the same value.
+     * @param callback Called with each feature on the source. Return a truthy value to stop iteration.
+     * @param that The object to use as this in the callback.
+     */
+    @JsMethod
+    public native void forEachFeature(Callback callback, Object that);
+
+    /**
+     * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry
+     * may not intersect the extent), calling the callback with each feature. If the callback returns a "truthy" value,
+     * iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call the
+     * source.forEachFeatureIntersectingExtent() method instead.
+     *
+     * When useSpatialIndex is set to false, this method will loop through all features,
+     * equivalent to ol.source.Vector#forEachFeature.
+     * @param extent Extent.
+     * @param callback Called with each feature whose bounding box intersects the provided extent.
+     * @param that The object to use as this in the callback.
+     */
+    @JsMethod
+    public native void forEachFeatureInExtent(Extent extent, Callback callback, Object that);
+
+    /**
+     * Iterate through all features whose geometry intersects the provided extent, calling the callback with each feature.
+     * If the callback returns a "truthy" value, iteration will stop and the function will return the same value.
+     *
+     * If you only want to test for bounding box intersection, call the source.forEachFeatureInExtent() method instead.
+     * @param extent Extent.
+     * @param callback Called with each feature whose geometry intersects the provided extent.
+     * @param that The object to use as this in the callback.
+     */
+    @JsMethod
+    public native void forEachFeatureIntersectingExtent(Extent extent, Callback callback, Object that);
 
     /**
      * Get the closest feature to the provided coordinate.
@@ -139,13 +172,12 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native Feature[] getFeaturesInExtent(Extent extent);
-// TODO: FeatureFormat
-//    /**
-//     * Get the format associated with this source.
-//     * @return The feature format.
-//     */
-//    @JsMethod
-//    public native FeatureFormat getFormat();
+    /**
+     * Get the format associated with this source.
+     * @return The feature format.
+     */
+    @JsMethod
+    public native FeatureFormat getFormat();
 
     /**
      * Get the url associated with this source.
@@ -167,6 +199,11 @@ public class VectorSource extends Source {
      */
     @JsMethod
     public native void removeFeature(Feature feature);
+
+    @JsFunction
+    public interface Callback {
+        void function(Feature feature);
+    }
 
     @JsFunction
     public interface Filter {
