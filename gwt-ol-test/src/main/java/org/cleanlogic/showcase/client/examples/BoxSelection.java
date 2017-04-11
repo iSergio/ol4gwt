@@ -59,7 +59,7 @@ public class BoxSelection extends AbstractExample {
         VectorSourceOptions vectorSourceOptions = new VectorSourceOptions();
         vectorSourceOptions.url = "https://openlayers.org/en/v4.0.1/examples/data/geojson/countries.geojson";
         vectorSourceOptions.format = new GeoJSONFormat();
-        VectorLayer vectorLayer = VectorLayer.create(new VectorSource(vectorSourceOptions));
+        final VectorLayer vectorLayer = VectorLayer.create(new VectorSource(vectorSourceOptions));
 
         TileLayer tileLayer = TileLayer.create(new OSMSource());
 
@@ -96,7 +96,7 @@ public class BoxSelection extends AbstractExample {
         DragBoxInteraction.BoxEndListener boxEndListener = new DragBoxInteraction.BoxEndListener() {
             @Override
             public void function(DragBoxInteractionEvent event) {
-                List<String> info = new ArrayList<>();
+                final List<String> info = new ArrayList<>();
                 Extent extent = dragBoxInteraction.getGeometry().getExtent();
                 vectorLayer.getSource().forEachFeatureIntersectingExtent(extent, new VectorSource.Callback() {
                     @Override
