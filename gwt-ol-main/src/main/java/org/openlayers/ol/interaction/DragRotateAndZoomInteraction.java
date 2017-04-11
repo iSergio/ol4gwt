@@ -42,7 +42,7 @@ public class DragRotateAndZoomInteraction extends PointerInteraction {
     public DragRotateAndZoomInteraction(DragRotateAndZoomInteractionOptions options) {}
 
     /**
-     *
+     * Create {@link DragRotateAndZoomInteraction} instance by separated options.
      * @param condition A function that takes an {@link org.openlayers.ol.events.MapBrowserEvent} and returns a boolean to indicate whether that event should be handled.
      *                  Default is {@link Condition#shiftKeyOnly()} ()}
      * @return DragRotate interaction.
@@ -55,7 +55,7 @@ public class DragRotateAndZoomInteraction extends PointerInteraction {
     }
 
     /**
-     *
+     * Create {@link DragRotateAndZoomInteraction} instance by separated options.
      * @param condition A function that takes an {@link org.openlayers.ol.events.MapBrowserEvent} and returns a boolean to indicate whether that event should be handled.
      *                  Default is {@link Condition#shiftKeyOnly()} ()}
      * @param duration Animation duration in milliseconds. Default is 400.

@@ -16,34 +16,14 @@
 
 package org.openlayers.ol.interaction.options;
 
-import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import org.openlayers.ol.EventsConditionType;
 
 /**
+ * {@link org.openlayers.ol.interaction.PointerInteraction} options.
+ *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class KeyboardPanInteractionOptions {
-    /**
-     * A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled.
-     * Default is ol.events.condition.noModifierKeys and ol.events.condition.targetNotEditable.
-     */
-    @JsProperty
-    public EventsConditionType condition;
-    /**
-     * Animation duration in milliseconds. Default is 100.
-     */
-    @JsProperty
-    public double duration;
-    /**
-     * Pixel The amount to pan on each key press. Default is 128 pixels.
-     */
-    @JsProperty
-    public double pixelDelta;
-
-    @JsConstructor
-    public KeyboardPanInteractionOptions() {}
+public class PointerInteractionOptions {
 }

@@ -25,7 +25,7 @@ import org.openlayers.ol.interaction.options.KeyboardPanInteractionOptions;
  * the keys can only be used when browser focus is on the element to which the keyboard events are attached.
  * By default, this is the map div, though you can change this with the keyboardEventTarget in ol.Map. document never
  * loses focus but, for any other element, focus will have to be on, and returned to, this element
- * if the keys are to function. See also {@link ol.interaction.KeyboardZoom}.
+ * if the keys are to function. See also {@link KeyboardZoomInteraction}.
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsType(isNative = true, namespace = "ol.interaction", name = "KeyboardPan")

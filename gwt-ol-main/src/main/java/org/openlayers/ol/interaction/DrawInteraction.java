@@ -36,7 +36,7 @@ public class DrawInteraction extends PointerInteraction {
     public DrawInteraction(DrawInteractionOptions options) {}
 
     /**
-     * Create DrawInteraction instance by required {@link GeometryType}.
+     * Create DrawInteraction instance by separated options.
      * @param geometryType geometry type.
      * @return DrawInteraction instance.
      */
@@ -49,7 +49,7 @@ public class DrawInteraction extends PointerInteraction {
     }
 
     /**
-     * Create DrawInteraction instance by required {@link GeometryType}.
+     * Create DrawInteraction instance by separated options.
      * @param geometryType geometry type.
      * @return DrawInteraction instance.
      */

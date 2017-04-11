@@ -37,32 +37,32 @@ public class ExtentInteractionOptions {
     /**
      * Style for the drawn extent box. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POLYGON]
      */
-    @JsProperty
+    @JsProperty(name = "boxStyle")
     public Style boxStyle;
     /**
      * Style for the drawn extent box. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POLYGON]
      */
-    @JsProperty
+    @JsProperty(name = "boxStyleArray")
     public Style[] boxStyleArray;
     /**
      * Style for the drawn extent box. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POLYGON]
      */
-    @JsProperty
+    @JsProperty(name = "boxStyleFunction")
     public StyleFunction boxStyleFunction;
     /**
      * Style for the cursor used to draw the extent. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POINT]
      */
-    @JsProperty
+    @JsProperty(name = "pointerStyle")
     public Style pointerStyle;
     /**
      * Style for the cursor used to draw the extent. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POINT]
      */
-    @JsProperty
+    @JsProperty(name = "pointerStyleArray")
     public Style[] pointerStyleArray;
     /**
      * Style for the cursor used to draw the extent. Defaults to ol.style.Style.createDefaultEditing()[ol.geom.GeometryType.POINT]
      */
-    @JsProperty
+    @JsProperty(name = "pointerStyleFunction")
     public StyleFunction pointerStyleFunction;
     /**
      * Wrap the drawn extent across multiple maps in the X direction? Only affects visuals, not functionality. Defaults to false.

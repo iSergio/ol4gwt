@@ -14,31 +14,24 @@
  * limitations under the License.
  */
 
-package org.openlayers.ol.interaction.options;
+package org.openlayers.ol;
 
 import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * {@link org.openlayers.ol.interaction.PinchRotateInteraction} options.
+ * Implementation of inertial deceleration for map movement.
  *
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class PinchRotateInteractionOptions {
+@JsType(isNative = true, namespace = "ol", name = "Kinetic")
+public class Kinetic {
     /**
-     * The duration of the animation in milliseconds. Default is 250.
+     *
+     * @param decay Rate of decay (must be negative).
+     * @param minVelocity Minimum velocity (pixels/millisecond).
+     * @param delay Delay to consider to calculate the kinetic initial values (milliseconds).
      */
-    @JsProperty
-    public double duration;
-    /**
-     * Minimal angle in radians to start a rotation. Default is 0.3.
-     */
-    @JsProperty
-    public double threshold;
-
     @JsConstructor
-    public PinchRotateInteractionOptions() {}
+    public Kinetic(double decay, double minVelocity, double delay) {}
 }

@@ -40,7 +40,7 @@ public class DragRotateInteraction extends PointerInteraction {
     public DragRotateInteraction(DragRotateInteractionOptions options) {}
 
     /**
-     *
+     * Create {@link DragRotateInteraction} instance by separated options.
      * @param condition A function that takes an {@link org.openlayers.ol.events.MapBrowserEvent} and returns a boolean to indicate whether that event should be handled.
      *                  Default is {@link Condition#altShiftKeysOnly()}
      * @return DragRotate interaction.
@@ -53,7 +53,7 @@ public class DragRotateInteraction extends PointerInteraction {
     }
 
     /**
-     *
+     * Create {@link DragRotateInteraction} instance by separated options.
      * @param condition A function that takes an {@link org.openlayers.ol.events.MapBrowserEvent} and returns a boolean to indicate whether that event should be handled.
      *                  Default is {@link Condition#altShiftKeysOnly()}
      * @param duration Animation duration in milliseconds. Default is 250.

@@ -21,6 +21,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.EventsConditionType;
+import org.openlayers.ol.events.Condition;
 
 /**
  * {@link org.openlayers.ol.interaction.DragRotateInteraction} options.
@@ -31,7 +32,7 @@ import org.openlayers.ol.EventsConditionType;
 public class DragRotateInteractionOptions {
     /**
      * A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled.
-     * Default is ol.events.condition.altShiftKeysOnly.
+     * Default is {@link Condition#altShiftKeysOnly()}.
      */
     @JsProperty
     public EventsConditionType condition;
