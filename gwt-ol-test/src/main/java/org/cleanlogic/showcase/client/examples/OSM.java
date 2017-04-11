@@ -86,7 +86,7 @@ public class OSM extends AbstractExample {
     @Override
     public String[] getSourceCodeURLs() {
         String[] sourceCodeURLs = new String[1];
-        sourceCodeURLs[0] = GWT.getModuleBaseURL() + "examples/" + "HelloWorld.txt";
+        sourceCodeURLs[0] = GWT.getModuleBaseURL() + "examples/" + "OSM.txt";
         return sourceCodeURLs;
     }
 }
