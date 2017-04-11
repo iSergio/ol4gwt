@@ -23,6 +23,7 @@ import org.openlayers.ol.events.DrawInteractionEvent;
 import org.openlayers.ol.events.MapBrowserEvent;
 import org.openlayers.ol.geom.GeometryType;
 import org.openlayers.ol.interaction.options.DrawInteractionOptions;
+import org.openlayers.ol.source.VectorSource;
 
 /**
  * Interaction for drawing feature geometries.
@@ -33,6 +34,19 @@ import org.openlayers.ol.interaction.options.DrawInteractionOptions;
 public class DrawInteraction extends PointerInteraction {
     @JsConstructor
     public DrawInteraction(DrawInteractionOptions options) {}
+
+    /**
+     * Create DrawInteraction instance by required {@link GeometryType}.
+     * @param geometryType geometry type.
+     * @return DrawInteraction instance.
+     */
+    @JsOverlay
+    public static DrawInteraction create(VectorSource source, GeometryType geometryType) {
+        DrawInteractionOptions options = new DrawInteractionOptions();
+        options.source = source;
+        options.type = geometryType.toString();
+        return new DrawInteraction(options);
+    }
 
     /**
      * Create DrawInteraction instance by required {@link GeometryType}.
