@@ -17,12 +17,12 @@
 package org.openlayers.ol;
 
 import jsinterop.annotations.JsFunction;
+import org.openlayers.ol.events.MapBrowserEvent;
 
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
 @JsFunction
 public interface EventsConditionType {
-    //TODO: Object -> MapBrowserEvent
-    boolean function(Object event);
+    boolean function(MapBrowserEvent event);
 }
