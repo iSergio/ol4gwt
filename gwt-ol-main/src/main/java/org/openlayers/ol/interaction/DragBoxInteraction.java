@@ -16,10 +16,7 @@
 
 package org.openlayers.ol.interaction;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsFunction;
-import jsinterop.annotations.JsMethod;
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.*;
 import org.openlayers.ol.events.DragBoxInteractionEvent;
 import org.openlayers.ol.geom.Geometry;
 import org.openlayers.ol.interaction.options.DragBoxInteractionOptions;
@@ -51,6 +48,7 @@ public class DragBoxInteraction extends PointerInteraction {
      */
     @JsFunction
     public interface BoxDragListener {
+        @JsOverlay
         String TYPE = "boxdrag";
 
         void function(DragBoxInteractionEvent event);
@@ -61,6 +59,7 @@ public class DragBoxInteraction extends PointerInteraction {
      */
     @JsFunction
     public interface BoxEndListener {
+        @JsOverlay
         String TYPE = "boxend";
 
         void function(DragBoxInteractionEvent event);
@@ -71,6 +70,7 @@ public class DragBoxInteraction extends PointerInteraction {
      */
     @JsFunction
     public interface BoxStartListener {
+        @JsOverlay
         String TYPE = "boxstart";
 
         void function(DragBoxInteractionEvent event);
