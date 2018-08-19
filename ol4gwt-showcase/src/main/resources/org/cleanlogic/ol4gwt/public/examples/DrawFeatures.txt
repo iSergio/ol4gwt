@@ -1,0 +1,106 @@
+package org.cleanlogic.ol4gwt.showcase.examples;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.ListBox;
+import org.cleanlogic.ol4gwt.showcase.basic.AbstractExample;
+import org.cleanlogic.ol4gwt.showcase.components.store.ShowcaseExampleStore;
+import org.openlayers.ol.Collection;
+import org.openlayers.ol.Coordinate;
+import org.openlayers.ol.MapPanel;
+import org.openlayers.ol.View;
+import org.openlayers.ol.geom.GeometryType;
+import org.openlayers.ol.interaction.DrawInteraction;
+import org.openlayers.ol.layer.BaseLayer;
+import org.openlayers.ol.layer.TileLayer;
+import org.openlayers.ol.layer.VectorLayer;
+import org.openlayers.ol.options.MapOptions;
+import org.openlayers.ol.options.ViewOptions;
+import org.openlayers.ol.source.OSMSource;
+import org.openlayers.ol.source.VectorSource;
+import org.openlayers.ol.source.options.VectorSourceOptions;
+
+import javax.inject.Inject;
+
+/**
+ * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
+ */
+public class DrawFeatures extends AbstractExample {
+    private MapPanel mapPanel;
+    private VectorLayer vectorLayer;
+    private DrawInteraction drawInteraction;
+
+    @Inject
+    public DrawFeatures(ShowcaseExampleStore store) {
+        super("Draw Features", "Draw features", new String[]{"Showcase", "OpenLayers", "OSMSource"}, store);
+    }
+
+    @Override
+    public void buildPanel() {
+        TileLayer tileLayer = TileLayer.create(new OSMSource());
+
+        VectorSourceOptions vectorSourceOptions = new VectorSourceOptions();
+        vectorSourceOptions.wrapX = false;
+
+        vectorLayer = VectorLayer.create(new VectorSource(vectorSourceOptions));
+
+        ViewOptions viewOptions = new ViewOptions();
+        viewOptions.center = Coordinate.create(-11000000, 4600000);
+        viewOptions.zoom = 4;
+
+        MapOptions mapOptions = new MapOptions();
+        mapOptions.layers = new Collection<>(new BaseLayer[] {tileLayer, vectorLayer});
+        mapOptions.view = new View(viewOptions);
+
+        mapPanel = new MapPanel(mapOptions);
+        mapPanel.setHeight("400px");
+
+        ListBox geometryTypeLBox = new ListBox();
+        geometryTypeLBox.addItem(GeometryType.POINT.toString());
+        geometryTypeLBox.addItem(GeometryType.LINE_STRING.toString());
+        geometryTypeLBox.addItem(GeometryType.POLYGON.toString());
+        geometryTypeLBox.addItem(GeometryType.CIRCLE.toString());
+        geometryTypeLBox.addItem("None");
+        geometryTypeLBox.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent changeEvent) {
+                ListBox source = (ListBox) changeEvent.getSource();
+
+                mapPanel.getMap().removeInteraction(drawInteraction);
+                addInteraction(GeometryType.fromValue(source.getSelectedItemText()));
+            }
+        });
+
+        FlexTable flexTable = new FlexTable();
+        flexTable.setHTML(1, 0,"<b>Geometry type</b>");
+        flexTable.setWidget(1, 1, geometryTypeLBox);
+
+        contentPanel.add(mapPanel);
+        contentPanel.add(flexTable);
+        contentPanel.add(new HTML("<p>Example of using the Draw interaction. Select a geometry type from the dropdown " +
+                "above to start drawing. To finish drawing, click the last point. To activate freehand drawing for lines, " +
+                "polygons, and circles, hold the Shift key.</p>"));
+
+        initWidget(contentPanel);
+
+        addInteraction(GeometryType.POINT);
+    }
+
+    private void addInteraction(GeometryType geometryType) {
+        if (geometryType == null) {
+            return;
+        }
+        drawInteraction = DrawInteraction.create(vectorLayer.getSource(), geometryType);
+        mapPanel.getMap().addInteraction(drawInteraction);
+    }
+
+    @Override
+    public String[] getSourceCodeURLs() {
+        String[] sourceCodeURLs = new String[1];
+        sourceCodeURLs[0] = GWT.getModuleBaseURL() + "examples/" + "DrawFeatures.txt";
+        return sourceCodeURLs;
+    }
+}

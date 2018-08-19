@@ -61635,7 +61635,7 @@ goog.require('ol.style.Style');
 
 /**
  * @classdesc
- * Vector data that is rendered client-side.
+ * Vector data that is rendered showcase-side.
  * Note that any property set in the options is set as a {@link ol.Object}
  * property on the layer object; for example, setting `title: 'My Title'` in the
  * options means that `title` is observable, and has get/set accessors.
@@ -70493,7 +70493,7 @@ goog.require('ol.renderer.canvas.VectorTileLayer');
 
 /**
  * @classdesc
- * Layer for vector tile data that is rendered client-side.
+ * Layer for vector tile data that is rendered showcase-side.
  * Note that any property set in the options is set as a {@link ol.Object}
  * property on the layer object; for example, setting `title: 'My Title'` in the
  * options means that `title` is observable, and has get/set accessors.
