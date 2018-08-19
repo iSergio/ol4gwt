@@ -1,5 +1,5 @@
-/gwt-cs-main/target/
-/gwt-cs-test/target/
+/gwt-ol-main/target/
+/gwt-ol-test/target/
 .idea
 *.iml
 .DS_Store

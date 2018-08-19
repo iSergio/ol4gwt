@@ -17,13 +17,20 @@
 package org.openlayers.ol;
 
 import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
  * @author Serge Silaev aka iSergio <s.serge.b@gmail.com>
  */
-@JsType(isNative = true, namespace = "ol", name = "Extent")
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class Extent {
     @JsConstructor
-    public Extent(Number[] extent) {}
+    public Extent(double[] extent) {}
+
+    @JsOverlay
+    public static Extent create(double minx, double miny, double maxx, double maxy) {
+        return new Extent(new double[] {minx, miny, maxx, maxy});
+    }
 }

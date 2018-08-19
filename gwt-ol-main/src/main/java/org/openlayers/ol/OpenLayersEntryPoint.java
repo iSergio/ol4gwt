@@ -27,7 +27,7 @@ public class OpenLayersEntryPoint implements EntryPoint {
     public void onModuleLoad() {
         GWT.log("OpenLayers GTW module loaded");
         if (!OpenLayers.isInitialized()) {
-            String message = "The Core of OpenLayers (ol.js) JavaScript libraryes not loaded.\n" +
+            String message = "The Core of OpenLayers (ol.js) JavaScript libraries not loaded.\n" +
                     "If you inherit OpenLayers from NoScript gwt.xml, \nyou need include <script src='..../ol.js'> " +
                     "to load OpenLayers, \nalso you need include necessary css (Example: <link type=\"text/css\" href=\".../ol.css\">.\n" +
                     "By default OpenLayers path is [GWT App Name]/js/OpenLayers";
