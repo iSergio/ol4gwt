@@ -6,7 +6,7 @@
     <groupId>org.openlayers</groupId>
     <artifactId>ol4gwt</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.1.0</version>
+    <version>5.2.0.0</version>
 
     <name>OpenLayers GWT Framework</name>
 
