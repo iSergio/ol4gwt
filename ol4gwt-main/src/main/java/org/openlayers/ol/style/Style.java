@@ -16,11 +16,14 @@
 
 package org.openlayers.ol.style;
 
+import com.google.gwt.core.client.JsArray;
 import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
 import org.openlayers.ol.StyleGeometryFunction;
 import org.openlayers.ol.geom.Geometry;
+import org.openlayers.ol.render.State;
 import org.openlayers.ol.style.options.StyleOptions;
 
 /**
@@ -79,6 +82,13 @@ public class Style {
     public native ImageStyle getImage();
 
     /**
+     * Get the custom renderer function that was configured with #setRenderer or the renderer constructor option.
+     * @return Custom renderer function.
+     */
+    @JsMethod
+    public native RenderFunction getRenderer();
+
+    /**
      * Get the stroke style.
      * @return Stroke style.
      */
@@ -134,6 +144,13 @@ public class Style {
     public native void setImage(ImageStyle image);
 
     /**
+     * Sets a custom renderer function for this style. When set, fill, stroke and image options of the style will be ignored.
+     * @param renderer render Custom renderer function.
+     */
+    @JsMethod
+    public native void setRenderer(RenderFunction renderer);
+
+    /**
      * Set the stroke style.
      * @param stroke Stroke style.
      */
@@ -152,4 +169,9 @@ public class Style {
      */
     @JsMethod
     public native void setZIndex(int zIndex);
+
+    @JsFunction
+    public interface RenderFunction {
+        void function(double[] pixels, State state);
+    }
 }

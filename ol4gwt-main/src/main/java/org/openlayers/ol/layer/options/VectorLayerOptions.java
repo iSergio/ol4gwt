@@ -19,6 +19,7 @@ package org.openlayers.ol.layer.options;
 import jsinterop.annotations.*;
 import org.openlayers.ol.Map;
 import org.openlayers.ol.StyleFunction;
+import org.openlayers.ol.render.Render;
 import org.openlayers.ol.source.VectorSource;
 import org.openlayers.ol.style.Style;
 
@@ -33,7 +34,7 @@ public class VectorLayerOptions extends LayerOptions {
      * but get an undefined draw order. Required.
      */
     @JsProperty
-    public RenderOrder renderOrder;
+    public Render.OrderFunction renderOrder;
     /**
      * Sets the layer as overlay on a map. The map will not manage this layer in its layers collection, and the layer will
      * be rendered on top. This is useful for temporary layers. The standard way to add a layer to a map and have it
@@ -47,6 +48,15 @@ public class VectorLayerOptions extends LayerOptions {
      */
     @JsProperty
     public double renderBuffer;
+    /**
+     * Render mode for vector layers:
+     * 'image': Vector layers are rendered as images. Great performance, but point symbols and texts are always rotated
+     * with the view and pixels are scaled during zoom animations.
+     * 'vector': Vector layers are rendered as vectors. Most accurate rendering even during animations, but slower performance.
+     * @see VectorRenderType
+     */
+    @JsProperty
+    public String renderMode;
     /**
      * Source. Required.
      */
@@ -77,9 +87,4 @@ public class VectorLayerOptions extends LayerOptions {
 
     @JsConstructor
     public VectorLayerOptions() {}
-
-    @JsFunction
-    public interface RenderOrder {
-        void function();
-    }
 }

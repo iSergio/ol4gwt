@@ -42,6 +42,15 @@ public enum Units {
         }
     }
 
+    private static final Map<Units, Double> METERS_PER_UNIT = new HashMap<>();
+    static {
+        // use the radius of the Normal sphere
+        METERS_PER_UNIT.put(Units.DEGREES, 2 * Math.PI * 6370997 / 360);
+        METERS_PER_UNIT.put(Units.FEET, 0.3048);
+        METERS_PER_UNIT.put(Units.METERS, 1.0);
+        METERS_PER_UNIT.put(Units.USFEET, 1200.0 / 3937.0);
+    }
+
     private final String value;
 
     Units(String value) {
@@ -50,6 +59,14 @@ public enum Units {
 
     public static Units fromValue(String value) {
         return ENUM_MAP.get(value);
+    }
+
+    public double getMetersPerUnit() {
+        return Units.getMetersPerUnit(this);
+    }
+
+    public static double getMetersPerUnit(Units units) {
+        return METERS_PER_UNIT.get(units);
     }
 
     @Override

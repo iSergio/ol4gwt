@@ -63,7 +63,7 @@ public class VectorWFSGetFeature extends AbstractExample {
         styleOptions.stroke = StrokeStyle.create(Color.create(0, 0, 255, 1.0), 2);
         VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
         vectorLayerOptions.source = vectorSource;
-        vectorLayerOptions.style = new Style[] {new Style(styleOptions)};
+//        vectorLayerOptions.style = new Style[] {new Style(styleOptions)};
         VectorLayer vectorLayer = new VectorLayer(vectorLayerOptions);
 
         BingMapsSourceOptions bingMapsSourceOptions = new BingMapsSourceOptions();

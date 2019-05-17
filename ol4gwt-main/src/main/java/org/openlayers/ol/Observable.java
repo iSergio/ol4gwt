@@ -189,7 +189,7 @@ public abstract class Observable {
      */
     @JsFunction
     public interface Listener {
-        void function();
+        void function(Event event);
     }
 
     /**

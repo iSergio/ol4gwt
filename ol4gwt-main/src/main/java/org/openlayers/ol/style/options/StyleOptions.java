@@ -16,16 +16,11 @@
 
 package org.openlayers.ol.style.options;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.*;
 import org.openlayers.ol.StyleGeometryFunction;
 import org.openlayers.ol.geom.Geometry;
-import org.openlayers.ol.style.FillStyle;
-import org.openlayers.ol.style.ImageStyle;
-import org.openlayers.ol.style.StrokeStyle;
-import org.openlayers.ol.style.TextStyle;
+import org.openlayers.ol.render.State;
+import org.openlayers.ol.style.*;
 
 /**
  * {@link org.openlayers.ol.style.Style} options.
@@ -59,6 +54,11 @@ public class StyleOptions {
      */
     @JsProperty
     public ImageStyle image;
+    /**
+     * Custom renderer. When configured, fill, stroke and image will be ignored, and the provided function will be called with each render frame for each geometry.
+     */
+    @JsProperty
+    public Style.RenderFunction renderer;
     /**
      * Stroke style.
      */

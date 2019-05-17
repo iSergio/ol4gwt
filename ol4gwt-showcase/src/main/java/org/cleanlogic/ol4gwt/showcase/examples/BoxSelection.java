@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.*;
 import org.cleanlogic.ol4gwt.showcase.basic.AbstractExample;
 import org.cleanlogic.ol4gwt.showcase.components.store.ShowcaseExampleStore;
 import org.openlayers.ol.*;
+import org.openlayers.ol.events.Event;
 import org.openlayers.ol.events.Condition;
 import org.openlayers.ol.events.DragBoxInteractionEvent;
 import org.openlayers.ol.format.GeoJSONFormat;
@@ -116,7 +117,7 @@ public class BoxSelection extends AbstractExample {
 
         mapPanel.getMap().on("click", new Observable.Listener() {
             @Override
-            public void function() {
+            public void function(Event event) {
                 selectedFeatures.clear();
                 infoHTML.setHTML("");
             }

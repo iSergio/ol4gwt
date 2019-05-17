@@ -34,6 +34,9 @@ import org.openlayers.ol.proj.Projection;
 @JsType(isNative = true, namespace = "ol", name = "View")
 public class View extends Object {
     @JsConstructor
+    public View() {}
+
+    @JsConstructor
     public View(ViewOptions options) {}
 
     /**
