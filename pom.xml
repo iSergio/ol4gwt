@@ -6,7 +6,7 @@
     <groupId>org.openlayers</groupId>
     <artifactId>ol4gwt</artifactId>
     <packaging>pom</packaging>
-    <version>5.2.0.0</version>
+    <version>5.3.0.0</version>
 
     <name>OpenLayers GWT Framework</name>
 
@@ -15,8 +15,8 @@
         <gwt.version>2.8.2</gwt.version>
         <gwt.style>OBF</gwt.style>
 
-        <jdk.source>1.8</jdk.source>
-        <jdk.target>1.8</jdk.target>
+        <jdk.source>1.7</jdk.source>
+        <jdk.target>1.7</jdk.target>
 
         <!-- Maven -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
