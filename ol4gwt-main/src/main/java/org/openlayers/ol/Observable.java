@@ -188,17 +188,17 @@ public abstract class Observable {
      * Not use this interface instance, only for casts.
      */
     @JsFunction
-    public interface Listener {
-        void function(Event event);
+    public interface Listener<T extends Event> {
+        void function(T event);
     }
 
     /**
      * Generic change event. Triggered when the revision counter is increased.
      */
     @JsFunction
-    public interface ChangeListener {
+    public interface ChangeListener<T extends Event> {
         @JsOverlay
         String TYPE = "change";
-        void function(Event event);
+        void function(T event);
     }
 }

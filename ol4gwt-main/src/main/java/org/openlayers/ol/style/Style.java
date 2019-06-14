@@ -17,6 +17,7 @@
 package org.openlayers.ol.style;
 
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayNumber;
 import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
@@ -172,6 +173,6 @@ public class Style {
 
     @JsFunction
     public interface RenderFunction {
-        void function(double[] pixels, State state);
+        void function(Object pixels, State state);
     }
 }

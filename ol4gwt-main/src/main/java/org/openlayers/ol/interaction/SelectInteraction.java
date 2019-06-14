@@ -16,12 +16,11 @@
 
 package org.openlayers.ol.interaction;
 
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsMethod;
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.*;
 import org.openlayers.ol.Collection;
 import org.openlayers.ol.Feature;
 import org.openlayers.ol.events.MapBrowserEvent;
+import org.openlayers.ol.events.SelectEvent;
 import org.openlayers.ol.interaction.options.SelectInteractionOptions;
 import org.openlayers.ol.layer.VectorLayer;
 

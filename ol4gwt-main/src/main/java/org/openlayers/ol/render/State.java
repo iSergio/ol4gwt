@@ -1,6 +1,7 @@
 package org.openlayers.ol.render;
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.canvas.dom.client.Context2d;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -16,7 +17,7 @@ public class State {
      * Canvas context that the layer is being rendered to.
      */
     @JsProperty
-    public Canvas context;
+    public Context2d context;
     @JsProperty
     public Feature feature;
     @JsProperty
